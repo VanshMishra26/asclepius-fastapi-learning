@@ -12,6 +12,11 @@ A mini-project built while following a 16-week journey to create an AI-powered m
 - Request/response models
 - Interactive API documentation
 - In-memory data storage
+- Middleware architecture
+- Exception handling patterns
+- Professional logging practices
+- Git conflict resolution (rebase)
+- CORS understanding
 
 ##  Features
 
@@ -46,6 +51,7 @@ Currently uses keyword-based logic (will be replaced with AI in Weeks 4-6):
 - **FastAPI** - Modern web framework
 - **Pydantic v2** - Data validation
 - **Uvicorn** - ASGI server
+- **CORS Middleware** - Cross origin requests
 
 ##  Installation
 
@@ -125,6 +131,7 @@ asclepius-fastapi-learning/
 ├── app/
 │   ├── __init__.py
 │   ├── main.py           # FastAPI app and endpoints
+│   ├── middleware.py     # Logging and error handling middleware
 │   └── schemas.py        # Pydantic models
 ├── venv/                 # Virtual environment (gitignored)
 ├── requirements.txt      # Python dependencies
@@ -141,7 +148,7 @@ asclepius-fastapi-learning/
 - [x] Add custom field validators
 - [x] Create in-memory data storage
 - [x] Auto-generated API documentation
-- [ ] Add CORS middleware (Week 2, Day 2)
+- [x] Add CORS middleware (Week 2, Day 2)
 - [ ] Connect to PostgreSQL (Week 3)
 - [ ] Integrate AI model (Weeks 4-6)
 
@@ -188,4 +195,5 @@ Built following the Asclepius 16-Week YouTube Learning Path, with tutorials from
 
 **Day 1 Status**:  Complete  
 **Current Week**: Week 2 - FastAPI & Pydantic  
+**Done**: CORS Middleware & Testing
 **Next Up**: CORS Middleware & Testing
