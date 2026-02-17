@@ -1,7 +1,17 @@
-from fastapi import FastAPI, status
+from fastapi import FastAPI, status, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.schemas import SymptomInput, EchoResponse, DiagnosisResponse, DiagnosisHistory
+from app.middleware import (
+    log_requests,
+    validation_exception_handler,
+    http_exception_handler,
+    general_exception_handler
+)
 from datetime import datetime
 from typing import List
+
 
 # In-memory storage (temporary - we'll use PostgreSQL in Week 3)
 diagnosis_history: List[DiagnosisHistory] = []
@@ -13,6 +23,23 @@ app = FastAPI(
     description='Learning FastAPI with a medical symptom checker',
     version='0.1.0'
 )
+
+#CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ["*"],
+    allow_credentials = True,
+    allow_methods = ["*"],            #Allow all HTTP methods   
+    allow_headers = ["*"],
+)
+
+# Logging middleware
+app.middleware("http")(log_requests)
+
+# Exception handlers
+app.add_exception_handler(RequestValidationError, validation_exception_handler)
+app.add_exception_handler(StarletteHTTPException, http_exception_handler)
+app.add_exception_handler(Exception, general_exception_handler)
 
 # Root endpoint
 @app.get("/")
@@ -120,3 +147,4 @@ async def clear_history():
     global diagnosis_counter
     diagnosis_history.clear()
     diagnosis_counter = 0
+    
