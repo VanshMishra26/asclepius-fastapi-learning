@@ -1,10 +1,10 @@
 # Asclepius FastAPI Learning
 
-> 🏥 Learning FastAPI by building a medical symptom triage API - Week 2 of Project Asclepius
+>  Learning FastAPI by building a medical symptom triage API - Week 2 of Project Asclepius
 
 A mini-project built while following a 16-week journey to create an AI-powered medical triage system. This repository represents Week 2 (FastAPI & Pydantic fundamentals).
 
-## 📚 What I Learned
+##  What I Learned
 
 - FastAPI basics and routing
 - Pydantic v2 for data validation
@@ -13,7 +13,7 @@ A mini-project built while following a 16-week journey to create an AI-powered m
 - Interactive API documentation
 - In-memory data storage
 
-## 🚀 Features
+##  Features
 
 ### Current Endpoints
 
@@ -40,14 +40,14 @@ Currently uses keyword-based logic (will be replaced with AI in Weeks 4-6):
 - **Moderate**: Medium severity (5-7)
 - **Mild**: Low severity (1-4)
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Python 3.10+**
 - **FastAPI** - Modern web framework
 - **Pydantic v2** - Data validation
 - **Uvicorn** - ASGI server
 
-## 📦 Installation
+##  Installation
 
 1. **Clone the repository**
 ```bash
@@ -81,7 +81,7 @@ uvicorn app.main:app --reload
 http://127.0.0.1:8000/docs
 ```
 
-## 🧪 Usage Examples
+##  Usage Examples
 
 ### Diagnose Mild Symptoms
 ```bash
@@ -119,7 +119,7 @@ Once the server is running, visit:
 - **ReDoc**: http://127.0.0.1:8000/redoc
 - **OpenAPI JSON**: http://127.0.0.1:8000/openapi.json
 
-## 🗂️ Project Structure
+##  Project Structure
 ```
 asclepius-fastapi-learning/
 ├── app/
@@ -132,7 +132,7 @@ asclepius-fastapi-learning/
 └── README.md
 ```
 
-## 🎯 Learning Milestones
+##  Learning Milestones
 
 - [x] Set up Python virtual environment
 - [x] Create FastAPI application
@@ -145,7 +145,7 @@ asclepius-fastapi-learning/
 - [ ] Connect to PostgreSQL (Week 3)
 - [ ] Integrate AI model (Weeks 4-6)
 
-## ⚠️ Important Disclaimers
+##  Important Disclaimers
 
 **This is a learning project and NOT for medical use:**
 - No real medical diagnoses
@@ -153,7 +153,7 @@ asclepius-fastapi-learning/
 - Emergency detection is basic keyword matching
 - Always consult healthcare professionals for medical concerns
 
-## 🔮 Future Enhancements (Upcoming Weeks)
+##  Future Enhancements (Upcoming Weeks)
 
 - **Week 3**: PostgreSQL database integration with SQLAlchemy
 - **Week 4-6**: AI model integration (vLLM + Llama 3)
@@ -162,21 +162,21 @@ asclepius-fastapi-learning/
 - **Week 12-13**: Authentication and security
 - **Week 14-16**: Production deployment
 
-## 📚 Learning Resources
+## Learning Resources
 
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [Pydantic v2 Documentation](https://docs.pydantic.dev/)
 - [Asclepius 16-Week Learning Guide](link-to-your-guide)
 
-## 🤝 Part of Project Asclepius
+##  Part of Project Asclepius
 
 This repository is part of a 16-week learning journey to build a complete AI-powered medical triage system. See the full project roadmap in the main Asclepius repository.
 
-## 📝 License
+##  License
 
 MIT License - Feel free to use this for your own learning!
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 Built following the Asclepius 16-Week YouTube Learning Path, with tutorials from:
 - ArjanCodes
@@ -186,6 +186,6 @@ Built following the Asclepius 16-Week YouTube Learning Path, with tutorials from
 
 ---
 
-**Day 1 Status**: ✅ Complete  
+**Day 1 Status**:  Complete  
 **Current Week**: Week 2 - FastAPI & Pydantic  
 **Next Up**: CORS Middleware & Testing
