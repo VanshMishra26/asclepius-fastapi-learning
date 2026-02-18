@@ -129,14 +129,14 @@ Once the server is running, visit:
 ```
 asclepius-fastapi-learning/
 ├── app/
-│   ├── __init__.py
-│   ├── main.py           # FastAPI app and endpoints
-│   ├── middleware.py     # Logging and error handling middleware
-│   └── schemas.py        # Pydantic models
-├── venv/                 # Virtual environment (gitignored)
-├── requirements.txt      # Python dependencies
+│   ├── main.py           # API routes & business logic
+│   ├── schemas.py        # Pydantic v2 models
+│   ├── middleware.py     # Logging & error handlers
+│   └── __init__.py
+├── requirements.txt
 ├── .gitignore
 └── README.md
+
 ```
 
 ##  Learning Milestones
@@ -149,6 +149,7 @@ asclepius-fastapi-learning/
 - [x] Create in-memory data storage
 - [x] Auto-generated API documentation
 - [x] Add CORS middleware (Week 2, Day 2)
+- [x] Custom & Cross field validation
 - [ ] Connect to PostgreSQL (Week 3)
 - [ ] Integrate AI model (Weeks 4-6)
 
