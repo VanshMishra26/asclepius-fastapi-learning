@@ -45,7 +45,7 @@ app.add_exception_handler(Exception, general_exception_handler)
 @app.get("/")
 async def root():
     return {
-        "message": "🚀 Asclepius API is running!",
+        "message": "Asclepius API is running!",
         "status": "running",
         "version": "0.1.0"
     }
@@ -69,7 +69,10 @@ async def echo_symptoms(symptom_data: SymptomInput):
         received_symptoms=symptom_data.symptoms,  # Fixed typo: received not recieved
         received_duration=symptom_data.duration,
         received_severity=symptom_data.severity,
-        message=f"✅ Received your symptoms: {symptom_data.symptoms[:50]}..."
+        message=f"Received your symptoms: {symptom_data.symptoms[:50]}...",
+        risk_score=symptom_data.risk_score,
+        urgency_level=symptom_data.urgency_level,
+        patient_category=symptom_data.patient_category
     )
 
 # Diagnosis endpoint - simulates AI analysis
@@ -91,7 +94,10 @@ async def diagnose_symptoms(symptom_data: SymptomInput):
             severity="emergency",
             recommendation="🚨 Call 112 immediately or go to the nearest emergency room",
             confidence=0.95,
-            analyzed_symptoms=symptom_data.symptoms
+            analyzed_symptoms=symptom_data.symptoms,
+            risk_score=symptom_data.risk_score,
+            urgency_level=symptom_data.urgency_level,
+            patient_category=symptom_data.patient_category
         )
     # Check severity from user input
     elif symptom_data.severity and symptom_data.severity >= 8:
@@ -99,21 +105,30 @@ async def diagnose_symptoms(symptom_data: SymptomInput):
             severity="severe",
             recommendation="Seek medical attention within 4 hours",
             confidence=0.80,
-            analyzed_symptoms=symptom_data.symptoms
+            analyzed_symptoms=symptom_data.symptoms,
+            risk_score=symptom_data.risk_score,
+            urgency_level=symptom_data.urgency_level,
+            patient_category=symptom_data.patient_category
         )
     elif symptom_data.severity and symptom_data.severity >= 5:
         result = DiagnosisResponse(
             severity="moderate",
             recommendation="Consider seeing a doctor within 24-48 hours",
             confidence=0.70,
-            analyzed_symptoms=symptom_data.symptoms
+            analyzed_symptoms=symptom_data.symptoms,
+            risk_score=symptom_data.risk_score,
+            urgency_level=symptom_data.urgency_level,
+            patient_category=symptom_data.patient_category
         )
     else:
         result = DiagnosisResponse(
             severity="mild",
             recommendation="Monitor symptoms. Rest and stay hydrated. See a doctor if symptoms worsen.",
             confidence=0.65,
-            analyzed_symptoms=symptom_data.symptoms
+            analyzed_symptoms=symptom_data.symptoms,
+            risk_score=symptom_data.risk_score,
+            urgency_level=symptom_data.urgency_level,
+            patient_category=symptom_data.patient_category
         )
     
     # Save to history
@@ -123,6 +138,7 @@ async def diagnose_symptoms(symptom_data: SymptomInput):
         symptoms=symptom_data.symptoms,
         severity=result.severity,
         recommendation=result.recommendation,
+        risk_score=result.risk_score,
         timestamp=datetime.now()
     )
     diagnosis_history.append(history_entry)

@@ -13,34 +13,39 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-async def log_requests(request : Request, call_next):
-    """
-    Middleware to log all incoming requests and their processing time
-    """
-    
+async def log_requests(request: Request, call_next):
     start_time = time.time()
     logger.info(f"{request.method} - {request.url.path}")
-    response = await call_next(request)
-    
+
+    try:
+        response = await call_next(request)
+    except Exception:
+        logger.error("Request failed during processing")
+        raise
+
     process_time = time.time() - start_time
     logger.info(f"Completed in {process_time:.5f}s - Status: {response.status_code}")
-    
+
     response.headers["X-Process-Time"] = str(process_time)
-    return response 
+    return response
 
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    """
-    Handle Pydantic validation errors
-    """
     logger.error(f"Validation error on {request.method} {request.url.path}")
-    logger.error(f"Details: {exc.errors()}")
     
+    cleaned_errors = []
+    for error in exc.errors():
+        cleaned_errors.append({
+            "field": error.get("loc"),
+            "message": error.get("msg"),
+            "type": error.get("type")
+        })
+
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content={
             "error": "Validation Error",
             "message": "Invalid input data provided",
-            "details": exc.errors(),
+            "details": cleaned_errors,
             "path": str(request.url.path)
         }
     )
